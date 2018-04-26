@@ -1,0 +1,103 @@
+# 仿真
+## elaborate error类
+### 参数名字不符
+ 
+ ```verilog
+ module clock_div(
+    input clk,
+    output reg clk_div = 0
+    );
+    // 函数定义
+endmodule
+
+// 错误调用
+clock_div U1(
+    .clock(clock), // 参数名应为clk，而不是clock
+    .clk_div(clk_sys)
+);
+```
+ >  [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/elaborate.log' file for more information.
+
+### 匿名的组件调用
+```verilog
+// 禁止匿名调用，应该为
+// clock_div U1 (
+clock_div ( 
+    .clk(clock),
+    .clk_div(clk_sys)
+);
+```
+ >  [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/elaborate.log' file for more information.
+
+
+### 传入reg变量给reg参数
+```verilog
+// 模块
+module led_8lights(
+    input clock,
+    input reset,
+    output reg [7:0] Y
+    );
+    // 模块内容
+endmodule
+
+// 调用
+reg [7:0] Y;  // 错误
+wire [7:0] Y; // 正确
+led_8lights uut(
+    .clock(clock),
+    .reset(reset),
+    .Y(Y)
+);
+```
+> [VRFC 10-529] concurrent assignment to a non-net Y is not permitted ["D:/vivado/LED_8light/LED_8light.srcs/sim_1/new/led_sim.v":56]
+
+## complie error类
+### 错误类型的比较(使用了wire类型进行比较)
+```verilog
+// wire [2:0] count // 使用wire作比较，错误
+reg [2:0] count;    // 需要进行逻辑判断的都需要reg类型
+always @(posedge clk_sys) begin
+    if(count == 0)
+        count <= 7;
+    else begin
+        count <= count - 1; // 减 1 计数
+    end
+end
+   ```
+>  [USF-XSim-62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
+
+### 把数赋值给wire变量
+```verilog
+wire w;
+w = 1'b1;
+```
+> [USF-XSim 62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
+
+### 使用了未定义的变量
+>  [USF-XSim-62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
+
+### 在always块中声明变量
+```verilog
+always @(count or reset) begin
+    reg [7:0] Y;
+end
+```
+> [USF-XSim 62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
+
+### 重复声明变量
+```verilog
+reg [7:0] Y;
+wire Y;
+```
+> [USF-XSim 62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
+
+### 语法错误
+- 参数间没有加逗号
+- 参数最后加了分号
+- 参数前面没加input或output
+> [USF-XSim 62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2Mzg4NzE0NDddfQ==
+-->
