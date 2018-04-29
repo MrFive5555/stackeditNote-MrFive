@@ -85,6 +85,16 @@ wire Y;
 - 参数前面没加input或output
 > [USF-XSim 62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
 
+### 在错误的地方使用inut/output
+```verilog
+module multiplier_sim();
+    input reg[31:0] multiplicand;
+    input reg[31:0] multiplier;
+    input wire[31:0] product;
+    // 错误：input/output不能定义在模块参数列表之外
+endmodule
+```
+> [USF-XSim 62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyODA3NTkxN119
+eyJoaXN0b3J5IjpbNjQxNzI2MTA1LDEzMjgwNzU5MTddfQ==
 -->
