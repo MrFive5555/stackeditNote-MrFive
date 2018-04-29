@@ -53,19 +53,6 @@ led_8lights uut(
 > [VRFC 10-529] concurrent assignment to a non-net Y is not permitted ["D:/vivado/LED_8light/LED_8light.srcs/sim_1/new/led_sim.v":56]
 
 ## complie error类
-### 错误类型的比较(使用了wire类型进行比较)
-```verilog
-// wire [2:0] count // 使用wire作比较，错误
-reg [2:0] count;    // 需要进行逻辑判断的都需要reg类型
-always @(posedge clk_sys) begin
-    if(count == 0)
-        count <= 7;
-    else begin
-        count <= count - 1; // 减 1 计数
-    end
-end
-   ```
->  [USF-XSim-62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
 
 ### 把数赋值给wire变量
 ```verilog
@@ -99,5 +86,5 @@ wire Y;
 > [USF-XSim 62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2Mzg4NzE0NDddfQ==
+eyJoaXN0b3J5IjpbMTMyODA3NTkxN119
 -->
