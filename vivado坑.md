@@ -56,16 +56,15 @@ led_8lights uut(
 
 ### 在错误的位置赋值或assign
 ```verilog
-module controllor_sim(
-    input x
+module mod(
     );
     wire w;
     reg r;
     assign w = 1;             // 正确,在initial或always之assign
     r = 0;                    // 错误，在initial或always之外赋值
     initial begin
-        r = 1;                // 正确，在initial或always之内赋值
         assign w = 0;         // 错误，在initial或always之内assign
+        r = 1;                // 正确，在initial或always之内赋值
     end
 endmodule
 ```
@@ -116,6 +115,6 @@ endmodule
 ```
  > [USF-XSim-62] 'compile' step failed with error(s) while executing 'D:/vivado/SinglePeriodCPU/SinglePeriodCPU.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2Mzg5NzE2NiwtNzk3ODg2ODc5LDY0MT
-cyNjEwNSwxMzI4MDc1OTE3XX0=
+eyJoaXN0b3J5IjpbNTY4NjI2OTEwLC03OTc4ODY4NzksNjQxNz
+I2MTA1LDEzMjgwNzU5MTddfQ==
 -->
