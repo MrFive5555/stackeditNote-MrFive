@@ -62,6 +62,7 @@ module mod(
     reg r;
     assign w = 1;             // 正确,在initial或always之assign
     r = 0;                    // 错误，在initial或always之外赋值
+    assign r = 0
     assign r = 
     initial begin
         assign w = 0;         // 错误，在initial或always之内assign
@@ -116,6 +117,6 @@ endmodule
 ```
  > [USF-XSim-62] 'compile' step failed with error(s) while executing 'D:/vivado/SinglePeriodCPU/SinglePeriodCPU.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Mjc0OTkzNiw1Njg2MjY5MTAsLTc5Nz
+eyJoaXN0b3J5IjpbLTcyMjAwMTk2OCw1Njg2MjY5MTAsLTc5Nz
 g4Njg3OSw2NDE3MjYxMDUsMTMyODA3NTkxN119
 -->
