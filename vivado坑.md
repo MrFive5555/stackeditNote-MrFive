@@ -83,6 +83,7 @@ wire Y;
 - 参数间没有加逗号
 - 参数最后加了分号
 - 参数前面没加input或output
+- 参数个数不匹配
 > [USF-XSim 62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
 
 ### 在错误的地方使用inut/output
@@ -95,6 +96,16 @@ module multiplier_sim();
 endmodule
 ```
 > [USF-XSim 62] 'compile' step failed with error(s) while executing 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
+
+### 在input中使用reg
+```verilog
+module ALU(
+    input reg y
+    );
+endmodule
+```
+ > [USF-XSim-62] 'compile' step failed with error(s) while executing 'D:/vivado/SinglePeriodCPU/SinglePeriodCPU.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQxNzI2MTA1LDEzMjgwNzU5MTddfQ==
+eyJoaXN0b3J5IjpbLTc5Nzg4Njg3OSw2NDE3MjYxMDUsMTMyOD
+A3NTkxN119
 -->
