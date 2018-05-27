@@ -28,6 +28,8 @@ clock_div (
 );
 ```
  >  [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'D:/vivado/LED_8light/LED_8light.sim/sim_1/behav/elaborate.log' file for more information.
+ >  [VRFC 10-1047] module instantiation should have an instance name ["D:/vivado/SinglePeriodCPU/SinglePeriodCPU.srcs/sources_1/new/CPU.v":95]
+
 
 
 ### 传入reg变量给reg参数
@@ -117,6 +119,7 @@ endmodule
 ```
  > [USF-XSim-62] 'compile' step failed with error(s) while executing 'D:/vivado/SinglePeriodCPU/SinglePeriodCPU.sim/sim_1/behav/compile.bat' script. Please check that the file has the correct 'read/write/execute' permissions and the Tcl console output for any other possible errors or warnings.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3NTc0NzEwMCw1Njg2MjY5MTAsLTc5Nz
-g4Njg3OSw2NDE3MjYxMDUsMTMyODA3NTkxN119
+eyJoaXN0b3J5IjpbLTEyMzk3MTcyMzgsLTU3NTc0NzEwMCw1Nj
+g2MjY5MTAsLTc5Nzg4Njg3OSw2NDE3MjYxMDUsMTMyODA3NTkx
+N119
 -->
